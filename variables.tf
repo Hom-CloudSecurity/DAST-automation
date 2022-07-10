@@ -3,7 +3,7 @@ variable "aws_region" {
   # Ireland
   default     = "eu-west-1"
 }
-# Use the command line to inject this variable
+# Use the command line to inject this variable1
 variable "personal_access_token"{
   description = "personal token"
   default = "replace_this_with_your_token"
