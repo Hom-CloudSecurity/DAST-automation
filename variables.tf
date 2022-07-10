@@ -1,7 +1,7 @@
 variable "aws_region" {
   description = "The AWS region to create things in."
   # Ireland
-  default     = "eu-west-1"
+  default     = "us-west-2"
 }
 # Use the command line to inject this variable1
 variable "personal_access_token"{
