@@ -4,6 +4,7 @@ jobs:
   TerraformwillbeinActionsoon:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Terraform Init
         run: |
          terraform init
