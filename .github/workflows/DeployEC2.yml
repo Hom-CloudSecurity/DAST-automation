@@ -1,7 +1,7 @@
-name: learn-github-actions
+name: DeployEC2Inscance
 on: [workflow_dispatch]
 jobs:
-  DeployEC2instance:
+  TerraformwillbeinActionsoon:
     runs-on: ubuntu-latest
     steps:
       - name: Terraform Init
