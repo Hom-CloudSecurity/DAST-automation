@@ -14,6 +14,7 @@ jobs:
       - name: Terraform validate
         run: |
          terraform validate
+         ls
       - name: Terraform Apply
         run: |
          terraform apply -auto-approve -var 'personal_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }'
