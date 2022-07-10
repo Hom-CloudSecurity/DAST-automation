@@ -1,0 +1,1 @@
+user_data = templatefile("scripts/ec2.sh", {personal_access_token = var.personal_access_token})
