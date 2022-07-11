@@ -26,7 +26,6 @@ data "aws_ami" "ubuntu_server" {
 
 resource "aws_security_group" "security_group" {
   name = "sec_group_github_runner"
-
   egress {
     from_port   = 0
     to_port     = 0
