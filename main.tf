@@ -53,7 +53,8 @@ resource "aws_instance" "my-instance" {
   instance_type = "t2.micro" ## Free tier
   associate_public_ip_address = true
   key_name="ssh-key"
-  user-data = templatefile("scripts/ec2.sh", {personal_access_token = var.personal_access_token})
+  #user_data = templatefile("scripts/ec2.sh", {personal_access_token = var.personal_access_token})
+  user_data = "${file("scripts/ec2.sh")}"	
 	tags = {
 		Name = "GitHub-Runner"	
 		Type = "terraform"
