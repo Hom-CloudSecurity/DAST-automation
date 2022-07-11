@@ -24,8 +24,21 @@ data "aws_ami" "ubuntu_server" {
   }
 }
 
+resource "aws_key_pair" "ssh-key" {
+  key_name   = "ssh-key"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDfzuH3tMn7FRFfwReDJ/jgs2zeWjUNaeR7Jh6hTyS94N3YHpwoUba6HEOGZlnybzBXYGmpTOD7t+QcQZ9jwdH7nV28JtqqOBrLNqD6x3M5+pl7q+9cau+qnCqeTDosPIT8Hlxw0nvZLzC5Itct2zMMfKoSQEEPACPVpUnUeqbkspObWrkqA9J9P0LyKpaa0+KACMAwDl72tzNRT75+N4taIboq+cwF7QvDvimSZo9Wuztau5+dYvMztaa8MXJvEv73QBe1ED+ILmXjfb0D+hP87wSrfRl9KfwHlrKinI0gD0saP0TmLN2Q+WmNvisDMUFUDlhtDfHKGiNkFrBRUxuDZPBvb54+p7JIIae3J/EHFGIbdaPHb8w29HDHFfnj11a9utATxwcEle8ZHYMXNizA2IiWz0zxa/KhDa9X/N8VeY/iicWikbfwMKJbULVkCXkw7TM1UBMRo08i4Mt3hBohhANzOVHrGSf7eAkdTx+3qYXnmhgjbvMvEMxgRw9w3gU="
+}
+
 resource "aws_security_group" "security_group" {
   name = "sec_group_github_runner"
+  ingress {
+    cidr_blocks = [
+      "0.0.0.0/0"
+    ]
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+  }
   egress {
     from_port   = 0
     to_port     = 0
@@ -38,6 +51,8 @@ resource "aws_instance" "my-instance" {
   vpc_security_group_ids = [aws_security_group.security_group.id]
   ami           = data.aws_ami.ubuntu_server.id
   instance_type = "t2.micro" ## Free tier
+  associate_public_ip_address = true
+  key_name="ssh-key"
   user_data = templatefile("scripts/ec2.sh", {personal_access_token = var.personal_access_token})
 	tags = {
 		Name = "GitHub-Runner"	
