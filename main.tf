@@ -3,13 +3,14 @@ terraform {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 4.16"
-      aws_access_key_id=var.aws_access_key_id
-      aws_secret_access_key=var.aws_secret_access_key
-      region="us-west-2"
     }
   }
 
   required_version = ">= 1.2.0"
+}
+
+provider "aws" {
+  region = "us-west-2"
 }
 
 data "aws_ami" "ubuntu_server" {
