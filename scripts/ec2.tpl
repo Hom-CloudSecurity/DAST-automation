@@ -10,9 +10,9 @@ mkdir actions-runner
 cd actions-runner
 curl -o actions-runner-linux-x64-2.294.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.294.0/actions-runner-linux-x64-2.294.0.tar.gz
 tar xzf actions-runner-linux-x64-2.294.0.tar.gz
-rm actions-runner/actions-runner-linux-x64-2.294.0.tar.gz
-actions-runner/config.sh --url https://github.com/Hom-CloudSecurity/DAST-automation --token $runner_token --name "Github EC2 Runner" --unattended
-actions-runner/run.sh
+rm actions-runner-linux-x64-2.294.0.tar.gz
+config.sh --url https://github.com/Hom-CloudSecurity/DAST-automation --token $runner_token --name "Github EC2 Runner" --unattended
+run.sh
 EOF
 cd /home/ubuntu
 chmod +x user-data.sh
