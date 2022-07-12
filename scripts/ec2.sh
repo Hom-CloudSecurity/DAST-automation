@@ -11,7 +11,7 @@ cd ~/actions-runner
 curl -O -L https://github.com/actions/runner/releases/download/v2.263.0/actions-runner-linux-x64-2.263.0.tar.gz
 tar xzf ~/actions-runner/actions-runner-linux-x64-2.263.0.tar.gz
 rm ~/actions-runner/actions-runner-linux-x64-2.263.0.tar.gz
-~/actions-runner/config.sh --url https://github.com/Hom-CloudSecurity/DAST-automation --token \$runner_token --name "Github EC2 Runner" --unattended
+~/actions-runner/config.sh --url https://github.com/Hom-CloudSecurity/DAST-automation --token $runner_token --name "Github EC2 Runner" --unattended
 ~/actions-runner/run.sh
 EOF
 cd /home/ubuntu
