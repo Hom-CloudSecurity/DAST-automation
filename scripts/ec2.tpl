@@ -16,4 +16,4 @@ rm actions-runner-linux-x64-2.294.0.tar.gz
 EOF
 cd /home/ubuntu
 chmod +x user-data.sh
-/bin/su -c "/home/ubuntu/user-data.sh" ubuntu | tee -i /home/ubuntu/user-data.log
+/bin/su -c "./user-data.sh" - ubuntu | tee -i /home/ubuntu/user-data.log
